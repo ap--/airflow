@@ -183,6 +183,7 @@ apache-airflow-task-sdk-integration-tests = false
 google-cloud-aiplatform = "2026-08-13T00:00:00Z"
 pip = false
 pypdf = "2026-10-29T00:00:00Z"
+universal-pathlib = false
 uv = false
 
 [manifest]
@@ -2404,7 +2405,7 @@ requires-dist = [
     { name = "termcolor", specifier = ">=3.0.0" },
     { name = "thrift-sasl", marker = "extra == 'kerberos'", specifier = ">=0.4.2" },
     { name = "typing-extensions", specifier = ">=4.14.1" },
-    { name = "universal-pathlib", specifier = ">=0.3.8" },
+    { name = "universal-pathlib", specifier = "==0.3.11a1" },
     { name = "uuid6", specifier = ">=2024.7.10" },
     { name = "uvicorn", specifier = ">=0.37.0" },
     { name = "uvicorn-worker", marker = "extra == 'gunicorn'", specifier = ">=0.4.0" },
@@ -26168,15 +26169,15 @@ wheels = [
 
 [[package]]
 name = "universal-pathlib"
-version = "0.3.10"
+version = "0.3.11a1"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "fsspec" },
     { name = "pathlib-abc" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/3d/6e/d997a70ee8f4c61f9a7e2f4f8af721cf072a3326848fc881b05187e52558/universal_pathlib-0.3.10.tar.gz", hash = "sha256:4487cbc90730a48cfb64f811d99e14b6faed6d738420cd5f93f59f48e6930bfb", size = 261110, upload-time = "2026-02-22T14:40:58.87Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/a4/a0/ce7e48046db40412f061dddc388ec5589a315a1d076e35bbfe5ad894a7a1/universal_pathlib-0.3.11a1.tar.gz", hash = "sha256:fb259cc3e42755acd36446c9ab72f84c282a424852e4290dcbcca7cae2811598", size = 295353, upload-time = "2026-11-23T14:51:03.83Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/dd/1a/5d9a402b39ec892d856bbdd9db502ff73ce28cdf4aff72eb1ce1d6843506/universal_pathlib-0.3.10-py3-none-any.whl", hash = "sha256:dfaf2fb35683d2eb1287a3ed7b215e4d6016aa6eaf339c607023d22f90821c66", size = 83528, upload-time = "2026-02-22T14:40:57.316Z" },
+    { url = "https://files.pythonhosted.org/packages/7b/6f/818c4ca6d7c22b778b2625ba86bb758bc8e04f5fd7208801892f69de5745/universal_pathlib-0.3.11a1-py3-none-any.whl", hash = "sha256:4f944149d81b150623ec73c0470544af030f5baf4c0df7be423b249900c682a4", size = 89774, upload-time = "2026-11-23T14:51:02.446Z" },
 ]
 
 [[package]]
