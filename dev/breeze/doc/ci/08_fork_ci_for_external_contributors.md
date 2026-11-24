@@ -531,6 +531,8 @@ other event. The `GITHUB_TOKEN` of the fork run is sufficient: the compare reads
 
 Images, caches and registries already work per repository (`GITHUB_REPOSITORY` is the fork),
 which is how contributors run CI in forks today via pull requests against their own `main`.
+Image names use `ghcr.io/<owner>/<repository>` with each component lowercased and stripped of
+leading and trailing `.`, `_` and `-`, so an owner such as `ap--` still gives valid image names.
 
 ## Reconciler
 

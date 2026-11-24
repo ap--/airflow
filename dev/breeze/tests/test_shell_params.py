@@ -444,3 +444,9 @@ def test_clone_with_test_runs_only_its_own_test_type():
     assert clone.test_type == "Providers[amazon:hooks]"
     assert clone.parallel_test_types_list == []
     assert shell_params.parallel_test_types_list == ["Providers[amazon:hooks]", "Providers[amazon:other]"]
+
+
+def test_image_names_are_valid_docker_references_for_owner_ending_with_hyphens():
+    params = ShellParams(github_repository="ap--/airflow", airflow_branch="main", python="3.11")
+    assert params.airflow_image_name == "ghcr.io/ap/airflow/main/ci/python3.11"
+    assert params.airflow_image_kubernetes == "ghcr.io/ap/airflow/main/kubernetes/python3.11"
