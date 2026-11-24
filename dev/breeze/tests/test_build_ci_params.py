@@ -55,3 +55,21 @@ def test_cache_from_image_added_when_registry_cache_is_not_used():
 def test_no_cache_from_image_flag_when_unset():
     flags = BuildCiParams(docker_cache="registry").common_docker_build_flags
     assert not any(flag.startswith("--cache-from=localhost") for flag in flags)
+
+
+@pytest.mark.parametrize(
+    ("github_repository", "expected_image_name"),
+    [
+        pytest.param("apache/airflow", "ghcr.io/apache/airflow/main/ci/python3.11", id="apache"),
+        pytest.param("Some-User/Airflow", "ghcr.io/some-user/airflow/main/ci/python3.11", id="uppercase"),
+        pytest.param("ap--/airflow", "ghcr.io/ap/airflow/main/ci/python3.11", id="owner-ends-with-hyphens"),
+        pytest.param(
+            "user/.airflow_", "ghcr.io/user/airflow/main/ci/python3.11", id="repo-wrapped-in-separators"
+        ),
+    ],
+)
+def test_image_name_is_a_valid_docker_reference_for_any_github_repository(
+    github_repository: str, expected_image_name: str
+):
+    params = BuildCiParams(github_repository=github_repository, airflow_branch="main", python="3.11")
+    assert params.airflow_image_name == expected_image_name

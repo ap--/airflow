@@ -77,6 +77,7 @@ from airflow_breeze.global_constants import (
     GithubEvents,
     GroupOfTests,
     get_airflow_version,
+    get_ghcr_image_prefix,
 )
 from airflow_breeze.utils.console import console_print
 from airflow_breeze.utils.docker_command_utils import is_docker_rootless
@@ -294,8 +295,7 @@ class ShellParams:
 
     @cached_property
     def airflow_base_image_name(self) -> str:
-        image = f"ghcr.io/{self.github_repository.lower()}"
-        return image
+        return get_ghcr_image_prefix(self.github_repository)
 
     @cached_property
     def airflow_image_name(self) -> str:

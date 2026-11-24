@@ -77,6 +77,19 @@ ANSWER = ""
 
 APACHE_AIRFLOW_GITHUB_REPOSITORY = "apache/airflow"
 
+
+def get_ghcr_image_prefix(github_repository: str) -> str:
+    """
+    Return the ghcr.io image prefix for images built for a GitHub repository.
+
+    Image path components must start and end with a lowercase letter or digit, but GitHub accepts
+    owners such as legacy usernames ending with a hyphen (``ap--``) and repositories such as
+    ``.github``, so each component is lowercased and stripped of leading and trailing separators.
+    """
+    components = (component.strip("._-") for component in github_repository.lower().split("/"))
+    return "ghcr.io/" + "/".join(components)
+
+
 # Checked before putting in build cache
 ALLOWED_PYTHON_MAJOR_MINOR_VERSIONS = ["3.11", "3.12", "3.13", "3.14"]
 DEFAULT_PYTHON_MAJOR_MINOR_VERSION = ALLOWED_PYTHON_MAJOR_MINOR_VERSIONS[0]

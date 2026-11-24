@@ -31,6 +31,7 @@ from airflow_breeze.global_constants import (
     DOCKER_DEFAULT_PLATFORM,
     OS_DEPS_IMAGE_DEBIAN_VERSION,
     get_airflow_version,
+    get_ghcr_image_prefix,
     get_hardened_python_base_image,
     get_pinned_os_deps_image,
 )
@@ -93,8 +94,7 @@ class CommonBuildParams:
 
     @property
     def airflow_base_image_name(self):
-        image = f"ghcr.io/{self.github_repository.lower()}"
-        return image
+        return get_ghcr_image_prefix(self.github_repository)
 
     @property
     def airflow_image_name(self):
